@@ -1,0 +1,27 @@
+services:
+  _defaults: { autowire: true, autoconfigure: true, public: false }
+
+  Nyholm\Psr7\Factory\Psr17Factory: ~
+  Symfony\Component\HttpClient\Psr18Client:
+    arguments:
+      - '@Symfony\Component\HttpClient\HttpClient'
+      - '@Nyholm\Psr7\Factory\Psr17Factory'
+      - '@Nyholm\Psr7\Factory\Psr17Factory'
+
+  Belghiti\Vies\Client\HttpViesClient:
+    arguments:
+      - '@Symfony\Component\HttpClient\Psr18Client'
+      - '@Nyholm\Psr7\Factory\Psr17Factory'
+      - '@Nyholm\Psr7\Factory\Psr17Factory'
+      - '%peasy_vies.base_uri%'
+
+  Belghiti\Vies\Decorator\RetryingViesClient:
+    arguments: ['@Belghiti\Vies\Client\HttpViesClient', 3, 200]
+
+  Belghiti\Vies\Symfony\Service\SymfonyCacheViesClient:
+    arguments:
+      - '@Belghiti\Vies\Decorator\RetryingViesClient'
+      - '@cache.app'
+      - '%peasy_vies.cache_ttl%'
+
+  Belghiti\Vies\Client\ViesClientInterface: '@Belghiti\Vies\Symfony\Service\SymfonyCacheViesClient'

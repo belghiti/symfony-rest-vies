@@ -1,0 +1,22 @@
+{
+  "name": "belghiti/symfony-vies",
+  "description": "Symfony bundle for belghiti/vies-client (Belghiti\\Vies).",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Belghiti\\\\Vies\\\\Symfony\\\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "symfony/framework-bundle": "^7.4 || ^8.0",
+    "symfony/http-client": "^7.4 || ^8.0",
+    "nyholm/psr7": "^1.8",
+    "belghiti/vies-client": "^0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5",
+    "symfony/phpunit-bridge": "^7.4 || ^8.0"
+  }
+}
