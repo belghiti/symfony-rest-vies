@@ -1,5 +1,5 @@
 {
-  "name": "belghiti/symfony-vies",
+  "name": "belghiti/symfony-rest-vies",
   "description": "Symfony bundle for belghiti/vies-client (Belghiti\\Vies).",
   "type": "symfony-bundle",
   "license": "MIT",

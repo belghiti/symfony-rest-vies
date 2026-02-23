@@ -1,1 +1,1 @@
-# belghiti/symfony-vies
+# belghiti/symfony-rest-vies
